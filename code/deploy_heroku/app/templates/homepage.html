@@ -1,0 +1,51 @@
+{% extends 'layout.html'%}
+
+{%block title%}
+Home
+{%endblock title%}
+
+{%block content%}
+
+<div class="container-md mt-2 mb-2">
+    <h1 class="text-primary"> Please rate the movies you have watched and press submit!</h1>
+</div>
+
+<form method="Post" action="/recommendations">
+    <div class="container-md mt-3">
+        {% for movie_cluster in movie_list %}
+        <div class="row mt-4">
+            {% for movie in movie_cluster %}
+            <div class="col-3">
+                <div class="card">
+                    <!-- To be activated when using downloaded/local images -->
+                    <!-- {% set filename = movie[1] %}
+                    <img src="{{ url_for('static', filename=filename) }}" class="card-img-top" alt="{{ movie[0] }}"> -->
+                    <img src="{{ movie[1] }}" class="card-img-top" alt="{{ movie[0] }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie[0] }}</h5>
+                            <div class="br-wrapper br-theme-fontawesome-stars">
+                                How did you like this movie?
+                                <select class="star_query" name="{{ movie[0] }}">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                </select>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-12 mt-2 mb-4">
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+{%endblock content%}

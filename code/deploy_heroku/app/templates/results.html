@@ -1,0 +1,34 @@
+{% extends 'layout.html'%}
+
+{%block title%}
+Results
+{%endblock title%}
+
+{%block content%}
+
+<div class="container-md mt-2 mb-2">
+<h1 class="text-primary">Here you go - find your movie recommendations below!</h1>
+</div>
+
+{% for movie in top5_list %}
+<div class="container-md mt-3">
+    <div class="card">
+        <div class="row mt-3 mb-3 ms-2 me-2">
+            <div class="col-2">
+                <!-- To be activated when using downloaded/local images -->
+                <!-- {% set filename = movie[1] %}
+                <img src="{{ url_for('static', filename=filename) }}" class="img-fluid rounded-start" alt="{{ movie[0] }}"> -->
+                <img src="{{ movie[1] }}" class="img-fluid rounded-start" alt="{{ movie[0] }}">
+            </div>
+            <div class="col-10">
+                <div class="card-body">
+                <h3 class="card-title">{{ movie[0] }}</h3>
+                <p class="card-text"><i>Further information for this movie will be available soon!</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{%endblock content%}

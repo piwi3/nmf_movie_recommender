@@ -1,0 +1,36 @@
+{% extends 'layout.html'%}
+
+{%block title%}
+About
+{%endblock title%}
+
+{%block content%}
+<div class="container-md mt-5">
+    <h4 class="text-primary">What is this app doing?</h4>
+        <p>
+            Based on your <b>rating of movies</b> you have watched, this <b>app recommends 5 movies</b>, that will make your next movie night awesome!!!
+        </p>
+</div>
+
+<div class="container-md mt-4">
+    <h4 class="text-primary"> How does this app work?</h4>   
+    <ul>
+        <li>
+            This app is built on the <b>small <a href="https://grouplens.org/datasets/movielens/">MovieLense dataset</a></b>, movie poster have been downloaded from <b><a href="https://www.movieposterdb.com">movieposterdb</a></b>.
+        </li>
+        <li>
+            <b> Non-negative matrix factorization (NMF) </b> is used as recommendation engine. The NMF was tuned regarding fitting time and accuracy and works with <b> 5 hidden features </b>. The NMF algorithm of the <a href="http://surpriselib.com">surprise package</a> has been implemented, since the surprise version allows for NaNs (unlike the scikit-version of NMF).
+        </li>
+        <li>
+            To get an initial user rating for a variety of different movies, <b> 40 movies </b> are displayed on the home screen and <b>can be rated by the user</b>. For this, the movies were clustered into <b> 10 clusters using k-means </b> (based on the hidden NMF-features with prior PCA to get reduce features to 3 dimensions). 4 movies are then randomly selected from each of the 10 clusters, taking popularity into account (i.e. random sampling with popularity as weights). 
+        </li>
+        <li>
+            The <b> 5 movies with the highest rating prediction </b> are returned and displayed on the results page. 
+        </li>
+        <li>
+            For further information, please check out my <a href="https://github.com/piwi3">git profile</a>.
+        </li>
+    </ul>
+</div>
+
+{%endblock content%}
